@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=localadmin
 WorkingDirectory=/home/localadmin/repository/rai_ir
-ExecStart=python3 rai_ir.py
+ExecStart=/usr/bin/python3 /home/localadmin/repository/rai_ir/rai_ir.py
 
 [Install]
 WantedBy=multi-user.target
