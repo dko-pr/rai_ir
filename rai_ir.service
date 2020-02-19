@@ -1,11 +1,14 @@
 [Unit]
 Description=Send requests to customers.rai.ir
-After=network.target
+After=syslog.target network.target
 
 [Service]
-User=localadmin
+Type=simple
+User=unit
+Group=unit
 WorkingDirectory=/home/localadmin/repository/rai_ir
 ExecStart=/usr/bin/python3 /home/localadmin/repository/rai_ir/rai_ir.py
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
