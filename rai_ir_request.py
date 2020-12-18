@@ -51,3 +51,5 @@ def getTrackingDetails(carNumber):
         return str(json_answer_list)
     else:
         return str(json_answer_empty)
+
+print(getTrackingDetails(28857845))
