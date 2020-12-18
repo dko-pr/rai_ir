@@ -6,7 +6,7 @@ After=syslog.target network.target
 Type=simple
 User=localadmin
 WorkingDirectory=/home/localadmin/repository/rai_ir
-ExecStart=python3.8 /home/localadmin/repository/rai_ir/rai_ir.py
+ExecStart=/usr/local/bin/python3.8 /home/localadmin/repository/rai_ir/rai_ir.py
 Restart=always
 
 [Install]
