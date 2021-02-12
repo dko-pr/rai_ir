@@ -17,7 +17,7 @@ def getTrackingDetails(carNumber):
     html_fields = ['Id', 'CarNumber', 'TrainNumber', 'StationName', 'ArriveDate', 'ArriveTime', 'DepartDate', 'DepartTime', 'FromStation', 'DestStation']
 
     session = requests.Session()
-    img_captcha_data = session.get(url_captcha).content
+    img_captcha_data = session.get(url_captcha, verify=False).content
     with open(image_captcha_file, 'wb') as handler:
         handler.write(img_captcha_data)
 
@@ -52,4 +52,4 @@ def getTrackingDetails(carNumber):
     else:
         return str(json_answer_empty)
 
-#print(getTrackingDetails(28857845))
+# print(getTrackingDetails(28857845))
