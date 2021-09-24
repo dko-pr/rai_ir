@@ -5,6 +5,8 @@ import solve_captchas_with_model
 
 def getTrackingDetails(carNumber):
     json_answer_empty = [{}]
+    connect_timeout = 30
+    request_timeout = 60
     login = "Guest"
     password = "123"
     current_date = str(jdatetime.date.today())[2:].replace('-', '')
@@ -16,15 +18,15 @@ def getTrackingDetails(carNumber):
     str_class_bs4_tag = "<class 'bs4.element.Tag'>"
     html_fields = ['Id', 'CarNumber', 'TrainNumber', 'StationName', 'ArriveDate', 'ArriveTime', 'DepartDate', 'DepartTime', 'FromStation', 'DestStation']
     session = requests.Session()
-    response_captcha = session.get(url_captcha, verify=False, timeout=(5, 30))
+    response_captcha = session.get(url_captcha, verify=False, timeout=(connect_timeout, request_timeout))
     if response_captcha.status_code == 200:
         img_captcha_data = response_captcha.content
         with open(image_captcha_file, 'wb') as handler:
             handler.write(img_captcha_data)
         captcha_text = solve_captchas_with_model.solve_captcha_from_file(image_captcha_file)
-        response_check = session.post(url_check, data={'txtUserName': login, 'txtPassword': password, 'txtCaptcha': captcha_text, 'B1':'%E6%D1%E6%CF'}, timeout=(5, 30))
+        response_check = session.post(url_check, data={'txtUserName': login, 'txtPassword': password, 'txtCaptcha': captcha_text, 'B1':'%E6%D1%E6%CF'}, timeout=(connect_timeout, request_timeout))
         if response_check.status_code == 200:
-            response_detailed_info = session.get(url_detailed_info, timeout=(5, 30))
+            response_detailed_info = session.get(url_detailed_info, timeout=(connect_timeout, request_timeout))
             response_detailed_info.encoding = 'windows-1256'
             if response_detailed_info.status_code == 200:
                 full_answer = bs4(response_detailed_info.text, 'lxml')
