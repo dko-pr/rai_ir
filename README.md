@@ -21,3 +21,4 @@ sudo journalctl -u rai_ir
 sudo systemctl stop rai_ir
 sudo systemctl start rai_ir
 sudo systemctl enable rai_ir
+ведь после изменения файлов надо перезапустить службу.
