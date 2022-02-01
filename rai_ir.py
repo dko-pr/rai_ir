@@ -9,4 +9,4 @@ api = Api(app)
 #    app.run(host= '10.10.200.24', debug=False, port="21523")
 api.add_resource(rai_ir_resource.Redirecting, "/", "/", "/<string:url>")
 if __name__ == '__main__':
-    app.run(host= '10.10.253.60', debug=False, port="21529")
+    app.run(host= '10.10.200.24', debug=False, port="21523")
