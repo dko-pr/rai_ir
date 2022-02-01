@@ -18,17 +18,17 @@ class Redirecting(Resource):
     def get(self, url):
         response = redirect("https://www.13it.info/" + url)
         print(response.status_code)
-        print(response.content)
+        print(response.get_data())
         return response
     def post(self, url):
         response = redirect("https://www.13it.info/" + url)
         print(response.status_code)
-        print(response.content)
+        print(response.get_data())
         return response
     def put(self, url):
         response = redirect("https://www.13it.info/" + url)
         print(response.status_code)
-        print(response.content)
+        print(response.get_data())
         return response
     def delete(self):
         return "Not supported. Use GET method.", 404
