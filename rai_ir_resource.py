@@ -1,6 +1,5 @@
-from flask import redirect
 from flask_restful import Resource, reqparse
-#import rai_ir_request
+import rai_ir_request
 class Tracking(Resource):
     def get(self, carNumber):
         if (carNumber == 0):
@@ -11,24 +10,5 @@ class Tracking(Resource):
         return "Not supported. Use GET method.", 404
     def put(self):
         return "Not supported. Use GET method.", 404
-    def delete(self):
-        return "Not supported. Use GET method.", 404
-
-class Redirecting(Resource):
-    def get(self, url):
-        response = redirect("https://www.13it.info/" + url)
-        print(response.status_code)
-        print(response.get_data())
-        return response
-    def post(self, url):
-        response = redirect("https://www.13it.info/" + url)
-        print(response.status_code)
-        print(response.get_data())
-        return response
-    def put(self, url):
-        response = redirect("https://www.13it.info/" + url)
-        print(response.status_code)
-        print(response.get_data())
-        return response
     def delete(self):
         return "Not supported. Use GET method.", 404
