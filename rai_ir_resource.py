@@ -16,10 +16,16 @@ class Tracking(Resource):
 
 class Redirecting(Resource):
     def get(self, url):
-        return redirect("https://www.13it.info/" + url)
+        response = redirect("https://www.13it.info/" + url)
+        print(response)
+        return response
     def post(self, url):
-        return redirect("https://www.13it.info/" + url)
+        response = redirect("https://www.13it.info/" + url)
+        print(response)
+        return response
     def put(self, url):
-        return redirect("https://www.13it.info/" + url)
+        response = redirect("https://www.13it.info/" + url)
+        print(response)
+        return response
     def delete(self):
         return "Not supported. Use GET method.", 404
